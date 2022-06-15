@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-dark modif py-0" style="min-height: 40px;">
+    <div class="container-fluid">
+        <div class="col-6">
+            <div class="row">
+                <div style="width: 4.16% !important">
+                    <div class="float-start text-center">
+                        <span *ngIf="isAuthenticated()" style="color:rgb(0,120,120)" class="span" (click)="openNav()">&#9776;</span>
+                    </div>
+                </div>
+                <div class="col-11">
+                    <div class="row">
+                        <span class="titulo col-form-label" *ngIf="innerWidth > 500">{{titulo}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="navbar-collapse float-end" id="navbarSupportedContent">
+                <div class="d-flex">
+                    <ul style="list-style:none;margin-bottom:0">
+                        <li *ngIf="!isAuthenticated()">
+                            <a [routerLink]="['/login']" class="btn btn-login btn-outline-danger">Login</a>
+                        </li>
+                        <li *ngIf="isAuthenticated()" class="nav-item dropdown show mx-1">
+                            <a class="btn btn-login btn-outline-danger dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ usuario.username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><button [routerLink]="['/user/miperfil']" class="dropdown-item" type="submit" style="font-size: 12px;">Mi Perfil</button></li>
+                                <li><button (click)="logout()" class="dropdown-item" type="submit" style="font-size: 12px;">Cerrar Sesión</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="div_fondo" *ngIf="blnMenuAbierto"></div>
+<div id="myNav" class="overlay" *ngIf="isAuthenticated()">
+    <div class="header text-start">
+        <img src="assets/icons/logo-js.png" height="60px" width="240px" (click)="irPrincipal()">
+    </div>
+    <a href="javascript:void(0)" style="color:rgb(0,178,156)" class="closebtn col-form-label" (click)="closeNav()">&times;</a>
+    <ul style="padding-left: 10px; list-style:none;">
+        <li *ngFor="let mod of modulos">
+            <ng-container>
+                <a href="javascript:void(0)" class="jockey-menu" (click)="abrirSubMenu(mod)" [ngClass]="{'arrow':mod.abierto}">
+                    <img [src]="'assets/icons/'+mod.icon" class="icon me-2" alt=""/>
+                    {{mod.nombre}}
+                    <span class="float-end list_arrow" style="color:rgb(0,178,156)">&#9660;</span>
+                </a>
+                <ul @accordion *ngIf="mod.abierto" style="list-style:none">
+                    <li [ngClass]="{'d-none': !mod.abierto}" *ngFor="let sub of mod.subModulos">
+                        <ng-container>
+                            <a href="javascript:void(0)" (click)="abrirSubSubMenu(mod,sub)" class="sub-menu jockey-menu" [ngClass]="{'arrow':sub.abierto}">
+                                <img [src]="'assets/icons/'+sub.icon" class="icon" alt=""/>
+                                {{sub.nombre}}
+                                <span class="float-end list_arrow" style="color:rgb(0,178,156)">&#9660;</span>
+                            </a>
+                            <ul @accordion *ngIf="sub.abierto" style="list-style:none">
+                                <li [ngClass]="{'d-none': !sub.abierto}" *ngFor="let men of sub.menus">
+                                    <a [routerLink]="[men.ruta]" class="sub-sub-menu jockey-menu" (click)="closeNav()">
+                                        {{men.nombre}}
+                                    </a>
+                                </li>  
+                            </ul>         
+                        </ng-container>
+                    </li>
+                </ul>
+            </ng-container>
+        </li>
+    </ul>
+</div>
+<div (window:keydown)="onKeyDown($event)">

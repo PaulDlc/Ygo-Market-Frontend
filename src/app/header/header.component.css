@@ -1,0 +1,160 @@
+.modif {
+    background-color: rgb(192,236,231);
+}
+
+.titulo {
+    color: rgb(0,120,120) !important;
+    font-weight: bold;
+    font-size: 16px !important;
+}
+
+.btn-login {
+    background-color: rgb(255, 167, 167);
+    color: rgb(128, 13, 13) !important;
+    border: 0 solid !important
+}
+
+.header-foto {
+    background-color: rgb(224, 255, 246) !important;
+    height: 60px !important;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.closebtn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 26px !important;
+    text-decoration: none;
+    color: white;
+}
+
+.header {
+    font-size: 20px;
+    color: white;
+    line-height: 40px !important;
+    height: 43px;
+    background: #969696;
+    user-select: none;
+    padding-left: 15px;
+}
+
+.overlay ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 45px;
+    font-size: 15px !important;
+    color: white;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(0,178,156);
+    transition: .4s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.overlay ul li ul{
+    overflow:hidden;
+}
+
+.overlay ul a.sub-menu {
+    line-height: 35px;
+    padding-left: 40px;
+    border-top: 1px solid rgba(0,178,156, .3);
+}
+
+.overlay ul a.sub-sub-menu {
+    line-height: 35px;
+    padding-left: 60px;
+    border-top: 1px solid rgba(0,178,156, .075);
+}
+
+.overlay ul li a:hover {
+    padding-left: 20px;
+}
+
+.overlay ul li a.sub-menu:hover {
+    padding-left: 50px;
+}
+
+.overlay ul li a.sub-sub-menu:hover {
+    padding-left: 70px;
+}
+
+.overlay ul a i {
+    margin-right: 16px;
+}
+
+.arrow .list_arrow {
+    transform: rotate(180deg);
+}
+
+.list_arrow {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+    transition: transform .3s;
+}
+
+.div_fondo {
+    background-color: rgba(0, 0, 0, .15) !important;
+    height: 96vh !important;
+    position: absolute;
+    animation-duration: .25s;
+    animation-name: op;
+    width: 100% !important;
+    z-index: 10;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+}
+
+@keyframes op {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .closebtn {
+        font-size: 26px !important;
+        top: 5px;
+        right: 10px;
+    }
+}
+
+.btn-login {
+    padding: 3px 10px;
+}
+
+.span {
+    font-size: 22px !important;
+    cursor: pointer;
+    color: white;
+}
+
+.icon{
+    width:20px;
+    height: 20px;
+    margin-top:-4px;
+    object-fit: contain;
+    position: relative;
+}
+
+.jockey-menu {
+    background-color: white !important;
+    color: rgb(128,217,206) !important;
+    font-weight: bold !important;
+}
